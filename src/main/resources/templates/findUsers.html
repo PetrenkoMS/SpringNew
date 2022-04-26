@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Find User</title>
+</head>
+<body>
+    <form th:action="@{/findUsers}" th:object="${user}" method="post">
+        <input type="text" id="findThisSeries" name="findThisSeries" th:field="*{seriesPassport}" pattern="[0-9]{4}" title="4 цифры" placeholder="Введите серию паспорта" required>
+        <input type="text" id="findThisNumber" name="findThisNumber" th:field="*{numberPassport}" pattern="[0-9]{6}" title="6 цифр" placeholder="Введите номер паспорта" required>
+        <br>
+        <input type="submit" id="findThis" value="Найти">
+    </form>
+    <form th:action="@{/findUsers}" th:object="${user}" method="get">
+        <input type="submit" id="ClearAll" value="Очистить">
+    </form>
+    <h1>Result</h1>
+    <table border="2" cellspacing="1" cellpadding="1">
+        <tr>
+            <th> Имя </th>
+            <th> Фамилия </th>
+            <th> Возраст </th>
+            <th> Пол </th>
+            <th> Серия паспорта </th>
+            <th> Номер паспорта </th>
+            <th> Телефон </th>
+        </tr>
+        <tr>
+            <td th:text="${user.name}" />
+            <td th:text="${user.secondName}" />
+            <td th:text="${user.age}" />
+            <td th:text="${user.gender}" />
+            <td th:text="${user.seriesPassport}" />
+            <td th:text="${user.numberPassport}" />
+            <td th:text="${user.telephone}" />
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/bootstrap/css//bootstrap.min.css">
+    <link rel="stylesheet" href="../static/CSS/StyleLog.css">
+
+    <title>Войти</title>
+
+</head>
+<body>
+    <div class="container noLog">
+        <p>Просматривать сайт могут только зарегистрированные пользователи </p>
+        <p>Авторизуетесь на сайте по форме ниже </p>
+    </div>
+    <div></div>
+    <div></div>
+<!--    <div th:if="${param.error}">-->
+<!--        Неверно введен логин или пароль-->
+<!--    </div>-->
+<!--    <div th:if="${param.logout}">-->
+<!--        Вы вышли из системы-->
+<!--    </div>-->
+<!--    <form action="/auth/login" method="post">-->
+        <table border="0" cellspacing="10" cellpadding="2" width="100px" align="center" class="logOnForm">
+            <tr>
+                <td colspan="4" style="color:black">
+                    <h3> Вход в систему </h3>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2">
+                    Логин:
+                </th>
+                <td colspan="2">
+                    <input type="text" id="login" name="username" pattern=".{3,}" title="Минимум 3 символа" placeholder="Введите логин"  autofocus>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2">
+                    Пароль:
+                </th>
+                <td colspan="2">
+                    <input type="password" id="password" name="password" pattern=".{3,}" title="Минимум 3 символа" placeholder="Введите пароль">
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td colspan="2">
+                    <input type="submit" id="enter" value="Войти">
+                </td>
+                <td></td>
+            </tr>
+        </table>
+<!--    </form>-->
+    <div style="margin:10px 50%;">
+    </div>
+
+<!--    <script src="../static/bootstrap/js/bootstrap.min.js"></script>-->
+</body>
+</html>

@@ -1,0 +1,27 @@
+.logotip::first-letter{
+    font-family: logo;
+    font-size:160%;
+    padding-right:7px;
+}
+.logotip{
+    color:black;
+    font-size:32px;
+    font-weight:bold;
+    background-color: #ED760E;
+    padding-right:10px;
+}
+
+.navi {
+    font-size: 20px;
+    background-color: #FFCF40;
+    margin-bottom: -15px;
+    margin-top: -10px;
+}
+
+.divider{
+    margin-top: 10px;
+    background-image: url("../img/razdel.png");
+    background-repeat: repeat-x;
+    height:30px;
+    width:100%;
+}

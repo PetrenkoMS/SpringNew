@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="bootstrap/css//bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="CSS/StyleLog.css" type="text/css">
+    <title>Регистрация</title>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" th:src="@{/js/user_notification.js}"></script>
+    <script>
+        window.onload = function() {
+            $('#gender_M').prop("checked", true);
+        }
+    </script>
+
+</head>
+<body>
+    <div class="container noLog">
+        <p>Зарегистрируйтесь, используя форму ниже </p>
+        <p> Логин и пароль должны содержать больше 3-х символов, быть на английском языке и/или содержать цифры,
+            и не содержать специальные символы &lt; &gt; &frasl; &quot; &prime; , ; | \ <p>
+        <p> Введите Ваше имя и фамилию, возраст и пол. А также серию и номер паспорта, телефон и другую информацию о себе </p>
+    </div>
+    <form action="#" th:action="@{/registration}" th:object="${people}" method="post">
+        <table border="0" cellspacing="10" cellpadding="2" width="100px" align="center" class="logOnForm">
+            <td colspan="4" style="color:black">
+                <h3> Регистрация </h3>
+            </td>
+            <tr>
+                <td colspan="4">
+                    <p id="errorText" th:text="${people.er}"></p>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2">
+                    Логин:
+                </th>
+                <td colspan="2">
+                    <input type="text" id="newLogin" name="newLogin" th:field="*{login}" pattern=".{3,}" title="Минимум 3 символа" placeholder="Введите новый логин" autofocus required>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2">
+                    Пароль:
+                </th>
+                <td colspan="2">
+                    <input type="password" id="newPassword" name="newPassword" th:field="*{password}" pattern=".{3,}" title="Минимум 3 символа" placeholder="Введите пароль" required>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="1"> Имя: </th>
+                <td colspan="1">
+                    <input type="text" id="newName" name="newName" th:field="*{name}" pattern=".{2,}" title="Минимум 2 символа" placeholder="Введите Ваше имя" required>
+                </td>
+                <th colspan="1"> Фамилия: </th>
+                <td colspan="1">
+                    <input type="text" id="newSecondName" name="newSecondName" th:field="*{secondName}" pattern=".{2,}" title="Минимум 2 символа" placeholder="Введите Вашу фамилию" required>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="1"> Пол: </th>
+                <td colspan="1">
+                    <input type="radio" id="gender_M" name="gender" value="male" th:field="*{gender}" checked="checked">
+                    <label for="gender_M"> M </label>
+                    <input type="radio" id="gender_W" name="gender" value="female" th:field="*{gender}">
+                    <label for="gender_W"> Ж </label>
+                </td>
+                <th colspan="1"> Возраст: </th>
+                <td colspan="1">
+                    <input id="age" type="number" th:field="*{age}" min="14" max="120" step="1" placeholder="Возраст">
+                </td>
+            </tr>
+            <tr>
+                <th colspan="1"> Серия: </th>
+                <td colspan="1">
+                    <input type="text" id="seriesPassport" name="seriesPassport" th:field="*{seriesPassport}" pattern="[0-9]{4}" title="4 символа" placeholder="Введите серию паспорта" required>
+                </td>
+                <th colspan="1"> Номер: </th>
+                <td colspan="1">
+                    <input type="text" id="numberPassport" name="numberPassport" th:field="*{numberPassport}" pattern="[0-9]{6}" title="6 символов" placeholder="Введите номер паспорта" required>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="1"> Телефон: </th>
+                <td colspan="1">
+                    <input type="text" id="telephone" name="telephone" th:field="*{telephone}" pattern="[0-9]{11}" placeholder="x-xxx-xxx-xx-xx" required>
+                </td>
+                <th colspan="1"> О себе: </th>
+                <td colspan="1">
+                    <input type="text" id="aboutYou" name="aboutYou" pattern=".{6,}" title="Минимум 6 символов" placeholder="Напишите о себе" required>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <input type="submit" value="Зарегистрироваться">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <div style="margin:10px 50%"></div>
+
+    <script src="bootstrap/js/bootstrap.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<div th:fragment="header">
+    <div  class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 border-bottom shadow-sm" style="background-color:black;">
+        <h5 class="my-0 mr-md-auto font-weight-normal text-white"><a href="/"> Название компании </a></h5>
+        <nav class="my-2 my-md-0 mr-md-3" >
+            <a class="p-2 text-white" href="/">Главная</a>
+            <a class="p-2 text-white" href="/findUsers">Поиск клиентов</a>
+            <a class="p-2 text-white" href="#">Поддержка</a>
+            <a class="p-2 text-white" href="#">Цены</a>
+        </nav>
+<!--        <form th:action="@{/logout}" method="post">-->
+            <a type="submit" class="btn btn-outline-primary" value="Войти" href="/registration">Войти</a>
+<!--        </form>-->
+    </div>
+</div>
