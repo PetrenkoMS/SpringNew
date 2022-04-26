@@ -4,49 +4,61 @@
     <meta charset="UTF-8">
     <title>Find User</title>
 
-    <link rel="stylesheet" href="bootstrap/css//bootstrap.css" type="text/css">
-<!--    <link rel="stylesheet" href="CSS/StyleLog.css" type="text/css">-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <link rel="stylesheet" href="CSS/StyleFindUsers.css" type="text/css">
 
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 
 
 </head>
 <body>
-    <form th:action="@{/findUsers}" th:object="${user}" method="post">
-        <input type="text" id="findThisSeries" name="findThisSeries" th:field="*{seriesPassport}" pattern="[0-9]{4}" title="4 цифры" placeholder="Введите серию паспорта" required>
-        <input type="text" id="findThisNumber" name="findThisNumber" th:field="*{numberPassport}" pattern="[0-9]{6}" title="6 цифр" placeholder="Введите номер паспорта" required>
-        <br>
-        <input type="submit" id="findThis" value="Найти">
-    </form>
-    <form th:action="@{/findUsers}" th:object="${user}" method="get">
-        <input type="submit" id="ClearAll" value="Очистить">
-    </form>
-    <form th:action="@{/findUsers/pdf}" th:object="${user}" method="get">
-        <h1>Result</h1>
-        <table border="2" cellspacing="1" cellpadding="3">
-            <tr>
-                <th> Имя </th>
-                <th > Фамилия </th>
-                <th > Возраст </th>
-                <th > Пол </th>
-                <th > Серия паспорта </th>
-                <th > Номер паспорта </th>
-                <th > Телефон </th>
-                <th > Доп. информация </th>
-            </tr>
-            <tr>
-                <td th:text="${user.name}" th:field="*{name}" />
-                <td th:text="${user.secondName}" th:field="*{secondName}"/>
-                <td th:text="${user.age}" th:field="*{age}"/>
-                <td th:text="${user.gender}" th:field="*{gender}"/>
-                <td th:text="${user.seriesPassport}" th:field="*{seriesPassport}"/>
-                <td th:text="${user.numberPassport}" th:field="*{numberPassport}" />
-                <td th:text="${user.telephone}" th:field="*{telephone}"/>
-                <td th:text="${user.about}" th:field="*{about}"/>
-            </tr>
-        </table>
-        <input type="submit" id="topdf" value="Открыть pdf-файл" hidden>
-    </form>
+    <header th:insert="blocks/header :: header"></header>
+
+    <div class="container mainFindDiv">
+        <p> Введите серию и номер паспорта, чтобы найти данные этого пользователя <br>
+            Кнопка "Очистить" убирает результаты поиска <br>
+            Также можно сохранить и посмотреть данные в pdf-файле, нажав на кнопку "Открыть pdf-файл" </p>
+        <div class="poisk">
+            <form th:action="@{/findUsers}" th:object="${user}" method="post">
+                <label for="findThisSeries"> Введите серию паспорта: </label>
+                <input type="text" id="findThisSeries" name="findThisSeries" th:field="*{seriesPassport}" pattern="[0-9]{4}" title="4 цифры" placeholder="Введите серию паспорта" required>
+                <label for="findThisNumber"> Введите номер паспорта: </label>
+                <input type="text" id="findThisNumber" name="findThisNumber" th:field="*{numberPassport}" pattern="[0-9]{6}" title="6 цифр" placeholder="Введите номер паспорта" required>
+                <br>
+                <input type="submit" id="findThis" value="Найти" class="list-group-item list-group-item-success btn btn-large btn-success findBtnStyle">
+            </form>
+            <form th:action="@{/findUsers}" th:object="${user}" method="get">
+                <input type="submit" id="ClearAll" value="Очистить" class="list-group-item list-group-item-danger btn btn-large btn-danger clearBtnStyle">
+            </form>
+        </div>
+        <form th:action="@{/findUsers/pdf}" th:object="${user}" method="get">
+            <h1>Результат поиска</h1>
+            <table border="5" cellspacing="0" cellpadding="2" width="100%" align="center" class="spisok">
+                <tr>
+                    <th> Имя </th>
+                    <th > Фамилия </th>
+                    <th > Возраст </th>
+                    <th > Пол </th>
+                    <th > Серия паспорта </th>
+                    <th > Номер паспорта </th>
+                    <th > Телефон </th>
+                    <th > Доп. информация </th>
+                </tr>
+                <tr>
+                    <td th:text="${user.name}" th:field="*{name}" />
+                    <td th:text="${user.secondName}" th:field="*{secondName}"/>
+                    <td th:text="${user.age}" th:field="*{age}"/>
+                    <td th:text="${user.gender}" th:field="*{gender}"/>
+                    <td th:text="${user.seriesPassport}" th:field="*{seriesPassport}"/>
+                    <td th:text="${user.numberPassport}" th:field="*{numberPassport}" />
+                    <td th:text="${user.telephone}" th:field="*{telephone}"/>
+                    <td th:text="${user.about}" th:field="*{about}"/>
+                </tr>
+            </table>
+            <input type="submit" id="topdf" value="Открыть pdf-файл" class="list-group-item list-group-item-primary btn btn-large btn-primary pdfBtnStyle" hidden >
+        </form>
+    </div>
+
 
     <script th:inline="javascript">
         var er = /*[[${user}]]*/ ;

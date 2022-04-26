@@ -1,0 +1,55 @@
+body {
+    background-image: url(../images/fon.jpg);
+
+}
+
+h1 {
+    text-align: center;
+}
+
+p {
+    text-align: center;
+    font-size: 20px;
+}
+
+.mainFindDiv {
+    background-color: #E7E5DE;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+table {
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid black;
+}
+
+.spisok {
+    text-align:center;
+}
+
+.poisk {
+    text-align:center;
+}
+
+.findBtnStyle {
+    display:block;
+    margin:0 auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.clearBtnStyle {
+    display:block;
+    margin:0 auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.pdfBtnStyle {
+    display:block;
+    margin:0 auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
