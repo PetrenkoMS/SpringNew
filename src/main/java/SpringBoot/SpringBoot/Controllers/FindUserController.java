@@ -44,6 +44,7 @@ public class FindUserController {
 
         if (employSeriesAndNumber.size() == 1) {
             user = employSeriesAndNumber.get(0);
+            user.setEr("ok");
             model.addAttribute("user", user);
 
             userz=user;

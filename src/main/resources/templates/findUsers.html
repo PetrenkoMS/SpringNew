@@ -9,13 +9,7 @@
 
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 
-    <script th:inline="javascript">
-        var er = /*[[${user}]]*/ ;
-        console.log(er);
-        if (er.er != null) {
-            alert(er.er);
-        }
-    </script>
+
 </head>
 <body>
     <form th:action="@{/findUsers}" th:object="${user}" method="post">
@@ -51,7 +45,18 @@
                 <td th:text="${user.about}" th:field="*{about}"/>
             </tr>
         </table>
-        <input type="submit" id="topdf" value="Открыть pdf-файл">
+        <input type="submit" id="topdf" value="Открыть pdf-файл" hidden>
     </form>
+
+    <script th:inline="javascript">
+        var er = /*[[${user}]]*/ ;
+        console.log(er);
+        if (er.er != null && er.er != "ok") {
+            alert(er.er);
+        }
+        if (er.er === 'ok') {
+           document.getElementById("topdf").hidden = false;
+        }
+    </script>
 </body>
 </html>
