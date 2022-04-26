@@ -3,6 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Find User</title>
+
+    <link rel="stylesheet" href="bootstrap/css//bootstrap.css" type="text/css">
+<!--    <link rel="stylesheet" href="CSS/StyleLog.css" type="text/css">-->
+
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+    <script th:inline="javascript">
+        var er = /*[[${user}]]*/ ;
+        console.log(er);
+        if (er.er != null) {
+            alert(er.er);
+        }
+    </script>
 </head>
 <body>
     <form th:action="@{/findUsers}" th:object="${user}" method="post">
@@ -14,26 +27,31 @@
     <form th:action="@{/findUsers}" th:object="${user}" method="get">
         <input type="submit" id="ClearAll" value="Очистить">
     </form>
-    <h1>Result</h1>
-    <table border="2" cellspacing="1" cellpadding="1">
-        <tr>
-            <th> Имя </th>
-            <th> Фамилия </th>
-            <th> Возраст </th>
-            <th> Пол </th>
-            <th> Серия паспорта </th>
-            <th> Номер паспорта </th>
-            <th> Телефон </th>
-        </tr>
-        <tr>
-            <td th:text="${user.name}" />
-            <td th:text="${user.secondName}" />
-            <td th:text="${user.age}" />
-            <td th:text="${user.gender}" />
-            <td th:text="${user.seriesPassport}" />
-            <td th:text="${user.numberPassport}" />
-            <td th:text="${user.telephone}" />
-        </tr>
-    </table>
+    <form th:action="@{/findUsers/pdf}" th:object="${user}" method="get">
+        <h1>Result</h1>
+        <table border="2" cellspacing="1" cellpadding="3">
+            <tr>
+                <th> Имя </th>
+                <th > Фамилия </th>
+                <th > Возраст </th>
+                <th > Пол </th>
+                <th > Серия паспорта </th>
+                <th > Номер паспорта </th>
+                <th > Телефон </th>
+                <th > Доп. информация </th>
+            </tr>
+            <tr>
+                <td th:text="${user.name}" th:field="*{name}" />
+                <td th:text="${user.secondName}" th:field="*{secondName}"/>
+                <td th:text="${user.age}" th:field="*{age}"/>
+                <td th:text="${user.gender}" th:field="*{gender}"/>
+                <td th:text="${user.seriesPassport}" th:field="*{seriesPassport}"/>
+                <td th:text="${user.numberPassport}" th:field="*{numberPassport}" />
+                <td th:text="${user.telephone}" th:field="*{telephone}"/>
+                <td th:text="${user.about}" th:field="*{about}"/>
+            </tr>
+        </table>
+        <input type="submit" id="topdf" value="Открыть pdf-файл">
+    </form>
 </body>
 </html>

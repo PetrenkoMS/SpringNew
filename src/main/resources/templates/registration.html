@@ -13,6 +13,14 @@
         }
     </script>
 
+    <script th:inline="javascript">
+        var er = /*[[${people}]]*/ ;
+        console.log(er);
+        if (er.er != null) {
+            alert(er.er);
+        }
+    </script>
+
 </head>
 <body>
     <div class="container noLog">
@@ -26,11 +34,6 @@
             <td colspan="4" style="color:black">
                 <h3> Регистрация </h3>
             </td>
-            <tr>
-                <td colspan="4">
-                    <p id="errorText" th:text="${people.er}"></p>
-                </td>
-            </tr>
             <tr>
                 <th colspan="2">
                     Логин:
@@ -87,12 +90,12 @@
                 </td>
                 <th colspan="1"> О себе: </th>
                 <td colspan="1">
-                    <input type="text" id="aboutYou" name="aboutYou" pattern=".{6,}" title="Минимум 6 символов" placeholder="Напишите о себе" required>
+                    <input type="text" id="about" name="about" pattern="{5,}" title="Минимум 5 символов" placeholder="Напишите о себе" required>
                 </td>
             </tr>
             <tr>
                 <td colspan="4">
-                    <input type="submit" value="Зарегистрироваться">
+                    <input type="submit" value="Зарегистрироваться" >
                 </td>
             </tr>
         </table>

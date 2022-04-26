@@ -2,13 +2,19 @@ package SpringBoot.SpringBoot.Controllers;
 
 import SpringBoot.SpringBoot.DB.PeopleRepository;
 //import SpringBoot.SpringBoot.services.PeopleService;
+import SpringBoot.SpringBoot.services.GeneratePDFReport;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import SpringBoot.SpringBoot.model.PeopleModel;
 import SpringBoot.SpringBoot.model.ErrorModel;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 
+import java.io.ByteArrayInputStream;
 import java.util.List;
 
 @Controller
@@ -72,6 +78,11 @@ public class PeopleController {
                 people = new PeopleModel();
                 people.setEr("Регистрация прошла успешно");
                 returnPage = "home";
+//                List<PeopleModel> peopleInfoForList = (List<PeopleModel>) people;
+//                ByteArrayInputStream peopleInfo = GeneratePDFReport.peopleReport(peopleInfoForList);
+//                HttpHeaders headers = new HttpHeaders();
+//                headers.add("Content-Disposition", "inline; filename=peoplereport.pdf");
+
             }
             else {
                 people = new PeopleModel();
@@ -102,7 +113,6 @@ public class PeopleController {
 //        peopleRepository.save(peopleNew);
 //        return "people";
         model.addAttribute("people", people);
-        int zzz =1;
         return returnPage;
     }
 
