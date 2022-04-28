@@ -1,0 +1,33 @@
+body {
+    background-image: url(../images/fon.jpg);
+}
+
+.mainDiv {
+    background-color:#E7E5DE;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+h2 {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+p {
+    text-index: 25px;
+    font-size:20px;
+}
+
+footer{
+    background-image: url(../images/footer1.jpg);
+    color: #D0D0D0;
+    padding-top:20px;
+}
+
+.fcol5 {
+    text-align: justify;
+}
+
+.footer-icons {
+    text-align: center;
+}

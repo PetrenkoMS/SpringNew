@@ -1,14 +1,20 @@
 <div th:fragment="header">
     <div  class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 border-bottom shadow-sm" style="background-color:black;">
-        <h5 class="my-0 mr-md-auto font-weight-normal text-white"><a href="/"> Название компании </a></h5>
+        <h5 class="my-0 mr-md-auto font-weight-normal text-white"><a href="/" style="color:#CE2029; text-decoration: none;"> Поисковичек </a></h5>
         <nav class="my-2 my-md-0 mr-md-3" >
-            <a class="p-2 text-white" href="/">Главная</a>
-            <a class="p-2 text-white" href="/findUsers">Поиск клиентов</a>
-            <a class="p-2 text-white" href="#">Поддержка</a>
-            <a class="p-2 text-white" href="#">Цены</a>
+            <a class="p-2 text-white" style="text-decoration: none;" href="/">Главная</a>
+            <a class="p-2 text-white" style="text-decoration: none;" href="/findUsers">Поиск клиентов</a>
         </nav>
-<!--        <form th:action="@{/logout}" method="post">-->
-            <a type="submit" class="btn btn-outline-primary" value="Войти" href="/registration">Войти</a>
-<!--        </form>-->
+        <div sec:authorize="isAnonymous()">
+            <a type="submit" class="btn btn-outline-primary" value="Войти" href="/login"> Войти </a>
+        </div>
+        <div sec:authorize="isAnonymous()">
+            <a type="submit" class="btn btn-outline-secondary" style="color:#EFCDB8;" value="Зарегистрироваться" href="/registration"> Зарегистрироваться </a>
+        </div>
+        <div sec:authorize="isAuthenticated()" sec:authentication="name" type="text" style="margin-right: 15px; padding: 5px; color:black; background-color: white;" > </div>
+        <div sec:authorize="isAuthenticated()">
+            <a type="submit" class="btn btn-outline-danger" value="Выйти" href="/logout"> Выйти </a>
+        </div>
+
     </div>
 </div>

@@ -15,7 +15,6 @@
 
     <script th:inline="javascript">
         var er = /*[[${people}]]*/ ;
-        console.log(er);
         if (er.er != null) {
             alert(er.er);
         }
@@ -95,8 +94,20 @@
                 </td>
             </tr>
             <tr>
+                <td colspan="4">  </td>
+            </tr>
+            <tr>
                 <td colspan="4">
-                    <input type="submit" value="Зарегистрироваться">
+                    <input type="submit" class="btn btn-outline-primary" style="background-color:white; color:blue;" value="Зарегистрироваться">
+                </td>
+            </tr>
+            </tr>
+            <tr>
+                <td colspan="4">  </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <a class="btn btn-outline-secondary" style="background-color:white; color:black;" href="/"> На главную </a>
                 </td>
             </tr>
         </table>

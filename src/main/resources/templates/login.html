@@ -1,61 +1,39 @@
-<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="../static/bootstrap/css//bootstrap.min.css">
-    <link rel="stylesheet" href="../static/CSS/StyleLog.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Please sign in</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous">
 
-    <title>Войти</title>
+    <script th:inline="javascript">
+        var er = /*[[${error}]]*/ ;
+        if (er != null) {
+            alert("Неверно введен логин/пароль, или данный пользователь не зарегистрирован");
+        }
+    </script>
 
 </head>
 <body>
-    <div class="container noLog">
-        <p>Просматривать сайт могут только зарегистрированные пользователи </p>
-        <p>Авторизуетесь на сайте по форме ниже </p>
-    </div>
-    <div></div>
-    <div></div>
-<!--    <div th:if="${param.error}">-->
-<!--        Неверно введен логин или пароль-->
-<!--    </div>-->
-<!--    <div th:if="${param.logout}">-->
-<!--        Вы вышли из системы-->
-<!--    </div>-->
-<!--    <form action="/auth/login" method="post">-->
-        <table border="0" cellspacing="10" cellpadding="2" width="100px" align="center" class="logOnForm">
-            <tr>
-                <td colspan="4" style="color:black">
-                    <h3> Вход в систему </h3>
-                </td>
-            </tr>
-            <tr>
-                <th colspan="2">
-                    Логин:
-                </th>
-                <td colspan="2">
-                    <input type="text" id="login" name="username" pattern=".{3,}" title="Минимум 3 символа" placeholder="Введите логин"  autofocus>
-                </td>
-            </tr>
-            <tr>
-                <th colspan="2">
-                    Пароль:
-                </th>
-                <td colspan="2">
-                    <input type="password" id="password" name="password" pattern=".{3,}" title="Минимум 3 символа" placeholder="Введите пароль">
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td colspan="2">
-                    <input type="submit" id="enter" value="Войти">
-                </td>
-                <td></td>
-            </tr>
-        </table>
-<!--    </form>-->
-    <div style="margin:10px 50%;">
-    </div>
+<div class="container">
+    <form class="form-signin" method="post" action="/login">
+        <h2 class="form-signin-heading" style="text-align: center;">Войти</h2>
+        <p>
+            <label for="username" class="sr-only">Логин</label>
+            <input type="text" id="username" name="username" class="form-control" placeholder="Логин" required="" autofocus="">
+        </p>
+        <p>
+            <label for="password" class="sr-only">Пароль</label>
+            <input type="password" id="password" name="password" class="form-control" placeholder="Пароль" required="">
+        </p>
+        <input name="_csrf" type="hidden" value="c0ed5ba1-d0e1-46e9-976c-a484e195b169">
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Войти</button>
+        <a class="btn btn-lg btn-secondary btn-block" href="/registration"> Зарегистрироваться </a>
+        <a class="btn btn-lg btn-secondary btn-block" href="/"> На главную </a>
+    </form>
 
-<!--    <script src="../static/bootstrap/js/bootstrap.min.js"></script>-->
-</body>
-</html>
+</div>
+
+</body></html>

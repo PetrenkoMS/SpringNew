@@ -2,19 +2,16 @@ package SpringBoot.SpringBoot.Controllers;
 
 import SpringBoot.SpringBoot.DB.PeopleRepository;
 //import SpringBoot.SpringBoot.services.PeopleService;
-import SpringBoot.SpringBoot.services.GeneratePDFReport;
+import SpringBoot.SpringBoot.DB.UserRepository;
+import SpringBoot.SpringBoot.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.InputStreamResource;
-import org.springframework.http.MediaType;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import SpringBoot.SpringBoot.model.PeopleModel;
-import SpringBoot.SpringBoot.model.ErrorModel;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.ResponseEntity;
 
-import java.io.ByteArrayInputStream;
+import java.security.SecureRandom;
 import java.util.List;
 
 @Controller
@@ -23,6 +20,9 @@ public class PeopleController {
 
     @Autowired
     private PeopleRepository peopleRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
 //    @PostMapping("/people")
 //    public @ResponseBody String addNewPeople (@RequestParam String name, @RequestParam String secondName) {
@@ -54,6 +54,10 @@ public class PeopleController {
 //        String number = people.getNumberPassport();
 //        String telephone = people.getTelephone();
 
+        int strength = 12; // work factor of bcrypt
+        BCryptPasswordEncoder bCryptPasswordEncoder =
+                new BCryptPasswordEncoder(strength, new SecureRandom());
+
         String returnPage = "home";
 //        List<PeopleModel> employLogin = this.peopleRepository.findByLogin(login);
 //        List<PeopleModel> employSeriesAndNumber = this.peopleRepository.findBySeriesPassportAndNumberPassport(series,number);
@@ -74,6 +78,13 @@ public class PeopleController {
 //                peopleNew.setTelephone(telephone);
 
 //                peopleRepository.save(peopleNew);
+                User userNew = new User();
+                userNew.setUserName(people.getLogin());
+                userNew.setPassword(bCryptPasswordEncoder.encode(people.getPassword()));
+                userNew.setActive(true);
+                userNew.setRoles("ROLE_USER");
+//                people.setPassword(bCryptPasswordEncoder.encode(people.getPassword()));
+                userRepository.save(userNew);
                 peopleRepository.save(people);
                 people = new PeopleModel();
                 people.setEr("Регистрация прошла успешно");

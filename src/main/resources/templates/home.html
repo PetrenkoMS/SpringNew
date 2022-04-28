@@ -1,28 +1,55 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <link rel="stylesheet" href="CSS/StyleHome.css" type="text/css">
     <title> Main </title>
 </head>
 <body>
     <header th:insert="blocks/header :: header"></header>
-    <p> <th:block th:text="'привет ' + ${title}" ></th:block></p>
+    <div class="container mainDiv">
+        <h2> Добро пожаловать на сайт "Поисковичек"! </h2>
+        <p> На данном сайте Вы сможете найти зарегистрированного пользователя по серии и номеру паспорта, а также сохранить его данные в формате pdf.</p>
+        <p> Но это смогут сделать <b>только</b> зарегистрированные пользователи!
+            Так что для начала, необходимо зарегистрироваться на сайте, нажав на кнопку "Зарегистрироваться".
+            Если Вы уже зарегистрированы, то аутентифицируетесь, нажав на кнопку "Войти".
+            Еси Вы уже аутентифицированы, то Вы можете выйти из аккаунта, нажав на кнопку "Выйти" или просто закрыть браузер.</p>
+        <p> Для поиска зарегистрированного пользователся нажмите на "Поиск пользователя",
+            а для перехода на главную страницу - либо на "Главная", либо на логотип нашего сайта.</p>
+    </div>
 
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                </div>
+                <div class="col-5 fcol5">
+                    <h3>О сайте</h3>
+                    <p>Сайт создан для научного интереса и практики. Поэтому не рекомендую Вам оставлять реальные данные, логин и пароль</p>
+                </div>
+                <div class="col-5 fcol5">
+                    <h3>Информация</h3>
+                    <p>Подписывайтесь, чтобы получать уведомления об изменениях на сайте</p>
+                    <form action="" class="form-inline">
+                        <input type="text" class="input-large" placeholder="Email"/>
+                        <buttom type="submit" class="btn btn-info">Подписаться</buttom>
+                    </form>
+                    <p> Также Вы можете отправить отзыв о нашем сайте к нам на почту <a href="Search@erek.ru"> Search@erek.ru </a> </p>
+                </div>
+                <div class="col">
+                </div>
+            </div>
+            <div class="row" style="padding-top:15px; padding-bottom:35px;" >
+                <div class="footer-icons">
+                    <p><small>Copyright 2022, ОАО "SearchEREK"</small></p>
+                    <a href="https://ru.wikipedia.org/wiki/Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://ru.wikipedia.org/wiki/Твиттер"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.youtube.com"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>
-
-<!--<!DOCTYPE html>-->
-<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <title>Spring Boot Thymeleaf Web Application</title>-->
-<!--</head>-->
-<!--<body>-->
-<!--<h1>Welcome to Spring Boot Thymeleaf</h1>-->
-<!--<p>-->
-<!--    Hey there! <th:block th:text="${message}">message</th:block>-->
-<!--</p>-->
-<!--</body>-->
-<!--</html>-->

@@ -6,6 +6,7 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
     <link rel="stylesheet" href="CSS/StyleFindUsers.css" type="text/css">
+    <link rel="stylesheet" href="CSS/StyleFooter.css" type="text/css">
 
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 
@@ -59,6 +60,37 @@
         </form>
     </div>
 
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                </div>
+                <div class="col-5 fcol5">
+                    <h3>О сайте</h3>
+                    <p>Сайт создан для научного интереса и практики. Поэтому не рекомендую Вам оставлять реальные данные, логин и пароль</p>
+                </div>
+                <div class="col-5 fcol5">
+                    <h3>Информация</h3>
+                    <p>Подписывайтесь, чтобы получать уведомления об изменениях на сайте</p>
+                    <form action="" class="form-inline">
+                        <input type="text" class="input-large" placeholder="Email"/>
+                        <buttom type="submit" class="btn btn-info">Подписаться</buttom>
+                    </form>
+                    <p> Также Вы можете отправить отзыв о нашем сайте к нам на почту <a href="Search@erek.ru"> Search@erek.ru </a> </p>
+                </div>
+                <div class="col">
+                </div>
+            </div>
+            <div class="row" style="padding-top:15px; padding-bottom:35px;" >
+                <div class="footer-icons">
+                    <p><small>Copyright 2022, ОАО "SearchEREK"</small></p>
+                    <a href="https://ru.wikipedia.org/wiki/Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://ru.wikipedia.org/wiki/Твиттер"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.youtube.com"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script th:inline="javascript">
         var er = /*[[${user}]]*/ ;
@@ -70,5 +102,6 @@
            document.getElementById("topdf").hidden = false;
         }
     </script>
+
 </body>
 </html>
