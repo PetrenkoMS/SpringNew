@@ -46,17 +46,16 @@ public class GeneratePDFReportTest {
         Font fontParagraph = FontFactory.getFont(FONT_FILENAME);
         fontParagraph.setSize(12);
 
-        for (int i = 0; i < userInfo1.size(); i++) {
-            Paragraph paragraph2 = new Paragraph(userInfo1.get(i), fontParagraph);
+        for (int i = 0; i < userInfo.size(); i++) {
+            Paragraph paragraph2 = new Paragraph(userInfo.get(i), fontParagraph);
             paragraph2.setAlignment(Paragraph.ALIGN_CENTER);
 
             document.add(paragraph2);
         }
-        assertNotNull(document.getPageNumber(), "Документ пуст");
         document.close();
 
         byte[] pdfBytes = byteArrayOutputStream.toByteArray();
-        assertNull(pdfBytes, "Документ пуст");
+        assertNotNull(pdfBytes, "Документ пуст");
     }
 
 }
