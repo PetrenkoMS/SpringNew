@@ -1,8 +1,8 @@
-package SpringBoot.SpringBoot.securingweb;
+package SpringBoot.SpringBoot.services;
 
 import SpringBoot.SpringBoot.DB.UserRepository;
 import SpringBoot.SpringBoot.model.MyUserDetails;
-import SpringBoot.SpringBoot.model.User;
+import SpringBoot.SpringBoot.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

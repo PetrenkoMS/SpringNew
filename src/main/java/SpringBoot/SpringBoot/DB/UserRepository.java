@@ -1,7 +1,6 @@
 package SpringBoot.SpringBoot.DB;
 
-import SpringBoot.SpringBoot.model.User;
-import org.springframework.data.jpa.repository.JpaRepository;
+import SpringBoot.SpringBoot.entity.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

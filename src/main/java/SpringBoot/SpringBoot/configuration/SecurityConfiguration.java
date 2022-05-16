@@ -1,4 +1,4 @@
-package SpringBoot.SpringBoot.securingweb;
+package SpringBoot.SpringBoot.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -6,14 +6,9 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
-import javax.sql.DataSource;
 
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
@@ -43,23 +38,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .deleteCookies("JSESSIONID");
 
         http.csrf().disable(); //Нужна, чтобы, если зашел на сайт, работал permitAll.
-
-
-
-//        http.authorizeRequests()
-//                .antMatchers("/findUsers").hasRole("USER")
-//                .and()
-//            .authorizeRequests()
-//                .antMatchers("/","/registration","/user").permitAll()
-//                .and()
-//            .authorizeRequests()
-//                .anyRequest()
-//                .permitAll()
-//                .and()
-////                .antMatchers("/registration").permitAll()
-////                .antMatchers("/login").permitAll()
-//                .formLogin();
-////                .loginPage("/login");
     }
 
     @Bean

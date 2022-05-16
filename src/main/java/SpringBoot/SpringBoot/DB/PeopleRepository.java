@@ -1,9 +1,7 @@
 package SpringBoot.SpringBoot.DB;
 
-import SpringBoot.SpringBoot.model.PeopleModel;
-import org.springframework.data.jpa.repository.Query;
+import SpringBoot.SpringBoot.entity.PeopleModel;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

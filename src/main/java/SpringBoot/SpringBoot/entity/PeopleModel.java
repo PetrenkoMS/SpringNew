@@ -1,4 +1,4 @@
-package SpringBoot.SpringBoot.model;
+package SpringBoot.SpringBoot.entity;
 
 
 import lombok.Data;
@@ -22,7 +22,7 @@ import javax.persistence.*;
 })
 public class PeopleModel {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String login;
     private String password;
