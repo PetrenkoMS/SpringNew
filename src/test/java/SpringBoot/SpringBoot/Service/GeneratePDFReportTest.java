@@ -57,5 +57,4 @@ public class GeneratePDFReportTest {
         byte[] pdfBytes = byteArrayOutputStream.toByteArray();
         assertNotNull(pdfBytes, "Документ пуст");
     }
-
 }
