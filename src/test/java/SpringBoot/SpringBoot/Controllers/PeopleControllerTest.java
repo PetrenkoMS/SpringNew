@@ -31,7 +31,7 @@ class PeopleControllerTest {
 
     @Test
     public void peopleSubmit() {
-        PeopleModel people = new PeopleModel(80, "1qqq", "gogo", "Ivan", "Gagarin", "male", "24", "1111", "222222", "i am Ivan", "88009992323", null);
+        PeopleModel people = new PeopleModel(80L, "1qqq", "gogo", "Ivan", "Gagarin", "male", "24", "1111", "222222", "i am Ivan", "88009992323", null);
 //        pRepository.save(people);
 
         List<PeopleModel> employLogin = pRepository.findByLogin(people.getLogin());

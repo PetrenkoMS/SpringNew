@@ -3,14 +3,26 @@ package SpringBoot.SpringBoot.services;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfWriter;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Бизнес-логика для создания pdf файла
+ */
+@Transactional
 @Service
 public class GeneratePDFReport {
 
+    /**
+     * Создание pdf файла с данными пользователя
+     * @param response
+     * @param userInfo информация о пользователе
+     * @throws IOException
+     * @throws DocumentException
+     */
     public void export(HttpServletResponse response, List<String> userInfo) throws IOException, DocumentException {
 
         String FONT_FILENAME = "assets/fonts/arial.ttf";

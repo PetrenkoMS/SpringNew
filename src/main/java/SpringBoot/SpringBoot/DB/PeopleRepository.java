@@ -1,13 +1,19 @@
 package SpringBoot.SpringBoot.DB;
 
 import SpringBoot.SpringBoot.entity.PeopleModel;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * Таблица people_model - хранит информацию о пользователе
+ * findByLogin - поиск по логину
+ * findBySeriesPassportAndNumberPassport - поиск по серии и номеру паспорта (параметры соответственно)
+ */
 @Repository
-public interface PeopleRepository extends CrudRepository<PeopleModel, Integer> {
+public interface PeopleRepository extends JpaRepository<PeopleModel, Integer> {
     List<PeopleModel> findByLogin(String login);
     List<PeopleModel> findBySeriesPassportAndNumberPassport(String seriesPassport, String numberPassport);
 

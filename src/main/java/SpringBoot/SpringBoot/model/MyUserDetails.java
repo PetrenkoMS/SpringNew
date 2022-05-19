@@ -10,6 +10,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Модель для прохождения аутентификации
+ */
 public class MyUserDetails implements UserDetails {
 
     private String userName;

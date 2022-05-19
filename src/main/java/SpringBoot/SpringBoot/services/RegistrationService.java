@@ -7,6 +7,7 @@ import SpringBoot.SpringBoot.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.servlet.ModelAndView;
@@ -14,6 +15,10 @@ import org.springframework.web.servlet.ModelAndView;
 import java.security.SecureRandom;
 import java.util.List;
 
+/**
+ * Бизнес-логика для регистрации пользователей
+ */
+@Transactional
 @Service
 public class RegistrationService {
 
@@ -23,11 +28,21 @@ public class RegistrationService {
     @Autowired
     private UserRepository userRepository;
 
+    /**
+     * Создание объекта people для регистрации
+     * @param model
+     */
     public void peopleForm(Model model) {
         model.addAttribute("people", new PeopleModel());
     }
 
-    public ModelAndView peopleSubmit(@ModelAttribute PeopleModel people, Model model) {
+    /**
+     * Запись зарегистрированного пользователя в people_model и users, с учетом проверки логина, серии и номера паспорта (не должно быть таких же)
+     * @param people - для записи в таблицу people_model
+     * @param model
+     * @return Если успешная регистрация, то переход на главную страницу. Если нет - сообщение об ошибке и обновление страницы.
+     */
+    public ModelAndView peopleSubmit(PeopleModel people, Model model) {
         int strength = 12;
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(strength, new SecureRandom());
 
