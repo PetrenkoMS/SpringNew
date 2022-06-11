@@ -17,7 +17,7 @@
 
 </head>
 <body style="background-image: url(images/logOn.jpg)">
-<div class="container">
+<div id="logInForm" class="container">
     <form class="form-signin" method="post" action="/login">
         <h2 class="form-signin-heading" style="text-align: center;">Войти</h2>
         <p>
@@ -30,8 +30,8 @@
         </p>
         <input name="_csrf" type="hidden" value="c0ed5ba1-d0e1-46e9-976c-a484e195b169">
         <button class="btn btn-lg btn-primary btn-block" type="submit">Войти</button>
-        <a class="btn btn-lg btn-secondary btn-block" href="/registration"> Зарегистрироваться </a>
-        <a class="btn btn-lg btn-secondary btn-block" href="/"> На главную </a>
+        <a class="btn btn-lg btn-secondary btn-block" href="/registration" value="Зарегистрироваться"> Зарегистрироваться </a>
+        <a class="btn btn-lg btn-secondary btn-block" href="/" value="На главную"> На главную </a>
     </form>
 
 </div>
