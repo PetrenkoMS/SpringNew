@@ -1,6 +1,7 @@
 package steps;
 
 import SpringBoot.SpringBoot.pages.RegistrationPage;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.junit.Cucumber;
 
@@ -32,10 +33,10 @@ public class RegistrationPageStep {
         registrationPage.writeNewSecondName(param[3]);
     }
 
-//    @Then("Input new gender id")
-//    public void inputNewGenderId() {
-//        registrationPage.writeGender(param[4]);
-//    }
+    @Then("Input new gender id")
+    public void inputNewGenderId() {
+        registrationPage.writeGender(param[4]);
+    }
 
     @Then("Input new age id")
     public void inputNewAgeId() {
@@ -61,4 +62,5 @@ public class RegistrationPageStep {
     public void inputNewAboutId() {
         registrationPage.writeAbout(param[9]);
     }
+
 }

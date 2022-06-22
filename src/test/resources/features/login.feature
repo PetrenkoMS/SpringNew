@@ -7,8 +7,7 @@ Feature: Регистрация и аутентификация нового п�
       And Input new password id
       And Input new name id
       And Input new second-name id
-  #    Then Input new gender id
-      #  //input[@name='gender']
+      And Input new gender id
       And Input new age id
       And Input new series passport id
       And Input new number passport id

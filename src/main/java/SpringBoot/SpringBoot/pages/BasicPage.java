@@ -1,12 +1,14 @@
 package SpringBoot.SpringBoot.pages;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Selenide;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.*;
 
 public class BasicPage {
     public void clickButtonId(String text) {
+//        $(By.id("ldskfjdkl")).selectRadio("");
         $(By.xpath("//a[@id='" + text + "']")).click();
     }
 
@@ -23,6 +25,7 @@ public class BasicPage {
     }
 
     public void exitVisible(String text) {
+//        "".equals("ExpectedString");
         $(By.xpath("//a[@value='" + text + "']")).shouldBe(Condition.visible);
     }
 

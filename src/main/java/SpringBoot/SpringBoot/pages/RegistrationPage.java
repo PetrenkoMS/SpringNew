@@ -10,7 +10,7 @@ public class RegistrationPage {
     private SelenideElement newPassword = $(By.cssSelector("#newPassword"));
     private SelenideElement newName = $(By.cssSelector("#newName"));
     private SelenideElement newSecondName = $(By.cssSelector("#newSecondName"));
-//    private SelenideElement Gender = $(By.cssSelector("//input[@name='gender']"));
+    private SelenideElement Gender = $(By.name("gender"));
     private SelenideElement age = $(By.cssSelector("#age"));
     private SelenideElement seriesPassport = $(By.cssSelector("#seriesPassport"));
     private SelenideElement numberPassport = $(By.cssSelector("#numberPassport"));
@@ -33,9 +33,9 @@ public class RegistrationPage {
         this.newSecondName.val(text);
     }
 
-//    public void writeGender(String text) {
-//        this.Gender.val(text);
-//    }
+    public void writeGender(String text) {
+        this.Gender.selectRadio(text);
+    }
 
     public void writeAge(int text) {
         this.age.val(String.valueOf(text));
