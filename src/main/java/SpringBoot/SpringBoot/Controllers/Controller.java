@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Контроллеры для общения backend и frontend
@@ -24,6 +25,7 @@ public class Controller {
     private final FindUserServices findUserServices;
     private final GeneratePDFReport generatePDFReport;
     private final PDFExportService pDFExportService;
+    private final FindSomeUsersServices findSomeUsersServices;
 
     /**
      * Конструктор для controller
@@ -33,12 +35,13 @@ public class Controller {
      * @param generatePDFReport - бизнес-логика для генерации pdf файла
      * @param pDFExportService - бизнес-логика для создания и заполнения pdf файла
      */
-    public Controller(LoginService loginService, RegistrationService registrationService, FindUserServices findUserServices, GeneratePDFReport generatePDFReport, PDFExportService pDFExportService) {
+    public Controller(LoginService loginService, RegistrationService registrationService, FindUserServices findUserServices, FindSomeUsersServices findSomeUsersServices, GeneratePDFReport generatePDFReport, PDFExportService pDFExportService) {
         this.loginService = loginService;
         this.registrationService = registrationService;
         this.findUserServices = findUserServices;
         this.generatePDFReport = generatePDFReport;
         this.pDFExportService = pDFExportService;
+        this.findSomeUsersServices = findSomeUsersServices;
     }
 
     /**
@@ -117,5 +120,16 @@ public class Controller {
     @GetMapping("/findUsers/pdf")
     public void generatePDF(HttpServletResponse response) throws DocumentException, IOException {
         pDFExportService.generatePDF(response);
+    }
+
+    @GetMapping(value="/findSomeUsers")
+    public ModelAndView fSomeUsers(Model model) {
+        findSomeUsersServices.fSomeUsers(model);
+        return new ModelAndView("findSomeUsers");
+    }
+
+    @PostMapping(value= "/findSomeUsers")
+    public ModelAndView findSomeUsers(PeopleModel someUsers, Model model) {
+        return findSomeUsersServices.findSomeUsers(someUsers, model);
     }
 }

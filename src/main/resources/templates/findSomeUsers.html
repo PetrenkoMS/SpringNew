@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Поиск нескольких пользователей</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <link rel="stylesheet" href="CSS/StyleFindUsers.css" type="text/css">
+    <link rel="stylesheet" href="CSS/StyleFooter.css" type="text/css">
+
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+</head>
+<body>
+    <header th:insert="blocks/header :: header"></header>
+
+    <div class="container mainFindDiv">
+        <p> Введите серию и номер паспорта, чтобы найти данные этого пользователя <br>
+            Кнопка "Очистить" убирает результаты поиска <br>
+            Также можно сохранить и посмотреть данные в pdf-файле, нажав на кнопку "Открыть pdf-файл" </p>
+        <div class="poisk">
+            <form th:action="@{/findSomeUsers}" th:object="${someUsers}" method="post">
+                <label for="findThisSeriesSome"> Введите серию паспорта: </label>
+                <input type="text" id="findThisSeriesSome" name="findThisSeriesSome" th:field="*{seriesPassport}" pattern="[0-9]{4}" title="4 цифры" placeholder="Введите серию паспорта" required>
+                <label for="findThisNumberSome"> Введите номер паспорта: </label>
+                <input type="text" id="findThisNumberSome" name="findThisNumberSome" th:field="*{numberPassport}" pattern="[0-9]{6}" title="6 цифр" placeholder="Введите номер паспорта" required>
+                <br>
+                <input type="submit" id="findThisSome" value="Найти и добавить" class="list-group-item list-group-item-success btn btn-large btn-success findBtnStyle">
+            </form>
+            <form th:action="@{/findSomeUsers}" th:object="${someUsers}" method="get">
+                <input type="submit" id="ClearAllSome" value="Очистить" class="list-group-item list-group-item-danger btn btn-large btn-danger clearBtnStyle">
+            </form>
+        </div>
+        <form th:action="@{/findSomeUsers}" th:object="${someUsers}" method="get">
+            <h1>Результат поиска</h1>
+            <table border="5" cellspacing="0" cellpadding="2" width="100%" align="center" class="spisok">
+                <tr>
+                    <th> Имя </th>
+                    <th > Фамилия </th>
+                    <th > Возраст </th>
+                    <th > Пол </th>
+                    <th > Серия паспорта </th>
+                    <th > Номер паспорта </th>
+                    <th > Телефон </th>
+                    <th > Доп. информация </th>
+                </tr>
+                <tr>
+                    <td th:text="${someUsers.name}" th:field="*{name}" />
+                    <td th:text="${someUsers.secondName}" th:field="*{secondName}"/>
+                    <td th:text="${someUsers.age}" th:field="*{age}"/>
+                    <td th:text="${someUsers.gender}" th:field="*{gender}"/>
+                    <td th:text="${someUsers.seriesPassport}" th:field="*{seriesPassport}"/>
+                    <td th:text="${someUsers.numberPassport}" th:field="*{numberPassport}" />
+                    <td th:text="${someUsers.telephone}" th:field="*{telephone}"/>
+                    <td th:text="${someUsers.about}" th:field="*{about}"/>
+                </tr>
+            </table>
+            <input type="submit" id="topdfSome" value="Открыть pdf-файл" class="list-group-item list-group-item-primary btn btn-large btn-primary pdfBtnStyle" hidden >
+        </form>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                </div>
+                <div class="col-5 fcol5">
+                    <h3>О сайте</h3>
+                    <p style="font-size: 16px ">Сайт создан для научного интереса и практики. Поэтому не рекомендую Вам оставлять реальные данные, логин и пароль</p>
+                </div>
+                <div class="col-5 fcol5">
+                    <h3>Информация</h3>
+                    <p style="font-size: 16px ">Подписывайтесь, чтобы получать уведомления об изменениях на сайте</p>
+                    <form action="" class="form-inline">
+                        <input type="text" class="input-large" placeholder="Email"/>
+                        <buttom type="submit" class="btn btn-info">Подписаться</buttom>
+                    </form>
+                    <p style="font-size: 16px "> Также Вы можете отправить отзыв о нашем сайте к нам на почту <a href="Search@erek.ru"> Search@erek.ru </a> </p>
+                </div>
+                <div class="col">
+                </div>
+            </div>
+            <div class="row" style="padding-top:15px; padding-bottom:35px;" >
+                <div class="footer-icons">
+                    <p><small>Copyright 2022, ОАО "SearchEREK"</small></p>
+                    <a href="https://ru.wikipedia.org/wiki/Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://ru.wikipedia.org/wiki/Твиттер"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.youtube.com"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script th:inline="javascript">
+        var er = /*[[${someUsers}]]*/ ;
+        console.log(er);
+        if (er.er != null && er.er != "ok") {
+            alert(er.er);
+        }
+        if (er.er === 'ok') {
+           document.getElementById("topdf").hidden = false;
+        }
+    </script>
+
+</body>
+</html>
