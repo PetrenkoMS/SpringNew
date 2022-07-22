@@ -15,23 +15,35 @@
     <header th:insert="blocks/header :: header"></header>
 
     <div class="container mainFindDiv">
-        <p> Введите серию и номер паспорта, чтобы найти данные этого пользователя <br>
+        <p> Выберете поле, по которому Вы хотите искать пользователей <br>
+            Введите значение, чтобы найти пользователя(-ей) <br>
             Кнопка "Очистить" убирает результаты поиска <br>
-            Также можно сохранить и посмотреть данные в pdf-файле, нажав на кнопку "Открыть pdf-файл" </p>
+            </p>
         <div class="poisk">
             <form th:action="@{/findSomeUsers}" th:object="${someUsers}" method="post">
-                <label for="findThisSeriesSome"> Введите серию паспорта: </label>
-                <input type="text" id="findThisSeriesSome" name="findThisSeriesSome" th:field="*{seriesPassport}" pattern="[0-9]{4}" title="4 цифры" placeholder="Введите серию паспорта" required>
-                <label for="findThisNumberSome"> Введите номер паспорта: </label>
-                <input type="text" id="findThisNumberSome" name="findThisNumberSome" th:field="*{numberPassport}" pattern="[0-9]{6}" title="6 цифр" placeholder="Введите номер паспорта" required>
+                <label for="selectParam"> Выберете параметр поиска</label>
+                <select th:field="*{selectParam}" id="selectParam" name="selectParam" tabindex="1" required>
+                    <option selected value="name">Имя</option>
+                    <option value="secondName">Фамилия</option>
+                    <option value="age">Возраст</option>
+                    <option value="gender">Пол</option>
+                    <option value="seriesPassport">Серия паспорта</option>
+                    <option value="numberPassport">Номер паспорта</option>
+                    <option value="telephone">Телефон</option>
+                    <option value="login">Логин</option>
+                </select>
                 <br>
-                <input type="submit" id="findThisSome" value="Найти и добавить" class="list-group-item list-group-item-success btn btn-large btn-success findBtnStyle">
+                <br>
+                <label for="findThisUserSome"> Введите значение </label>
+                <input type="text" id="findThisUserSome" name="findThisUserSome" th:field="*{gender}" placeholder="Введите значение" th:pattern="*{pattern}" th:title="*{titlePattern}" required>
+                <br>
+                <input type="submit" id="findThisSome" value="Найти" class="list-group-item list-group-item-success btn btn-large btn-success findBtnStyle">
             </form>
             <form th:action="@{/findSomeUsers}" th:object="${someUsers}" method="get">
                 <input type="submit" id="ClearAllSome" value="Очистить" class="list-group-item list-group-item-danger btn btn-large btn-danger clearBtnStyle">
             </form>
         </div>
-        <form th:action="@{/findSomeUsers}" th:object="${someUsers}" method="get">
+        <form th:action="@{/findSomeUsers}" th:object="${employUsers}" method="get">
             <h1>Результат поиска</h1>
             <table border="5" cellspacing="0" cellpadding="2" width="100%" align="center" class="spisok">
                 <tr>
@@ -44,15 +56,15 @@
                     <th > Телефон </th>
                     <th > Доп. информация </th>
                 </tr>
-                <tr>
-                    <td th:text="${someUsers.name}" th:field="*{name}" />
-                    <td th:text="${someUsers.secondName}" th:field="*{secondName}"/>
-                    <td th:text="${someUsers.age}" th:field="*{age}"/>
-                    <td th:text="${someUsers.gender}" th:field="*{gender}"/>
-                    <td th:text="${someUsers.seriesPassport}" th:field="*{seriesPassport}"/>
-                    <td th:text="${someUsers.numberPassport}" th:field="*{numberPassport}" />
-                    <td th:text="${someUsers.telephone}" th:field="*{telephone}"/>
-                    <td th:text="${someUsers.about}" th:field="*{about}"/>
+                <tr name="trValue" th:each="someUser : ${employUsers}">
+                    <td th:text="${someUser.name}"> </td>
+                    <td th:text="${someUser.secondName}"> </td>
+                    <td th:text="${someUser.age}"> </td>
+                    <td th:text="${someUser.gender}"> </td>
+                    <td th:text="${someUser.seriesPassport}"> </td>
+                    <td th:text="${someUser.numberPassport}"> </td>
+                    <td th:text="${someUser.telephone}"> </td>
+                    <td th:text="${someUser.about}"> </td>
                 </tr>
             </table>
             <input type="submit" id="topdfSome" value="Открыть pdf-файл" class="list-group-item list-group-item-primary btn btn-large btn-primary pdfBtnStyle" hidden >

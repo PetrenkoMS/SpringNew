@@ -8,8 +8,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class BasicPage {
     public void clickButtonId(String text) {
-//        $(By.id("ldskfjdkl")).selectRadio("");
-        $(By.xpath("//a[@id='" + text + "']")).click();
+        $(By.id(text)).click();
     }
 
     public void clickButtonValue(String text) {
@@ -42,7 +41,7 @@ public class BasicPage {
     }
 
     public void homeVisible(String text) {
-        $(By.xpath("//h2[@id='" + text + "']")).shouldBe(Condition.visible);
+        $(By.id(text)).shouldBe(Condition.visible);
     }
 
     public void inputValueVisible(String text) {
@@ -50,6 +49,18 @@ public class BasicPage {
     }
 
     public void divIdVisible(String text) {
-        $(By.xpath("//div[@id='" + text + "']")).shouldBe(Condition.visible);
+        $(By.id(text)).shouldBe(Condition.visible);
+    }
+
+    public void idVisible(String text) {
+        $(By.id(text)).shouldBe(Condition.visible);
+    }
+
+    public void trNameVisible(String text) {
+        $(By.name(text)).shouldBe(Condition.visible);
+    }
+
+    public void trNameNotVisible(String text) {
+        $(By.name(text)).shouldBe(Condition.hidden);
     }
 }

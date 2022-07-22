@@ -17,7 +17,11 @@ import javax.persistence.*;
         @Index(name = "people_model_series_index", columnList = "seriesPassport"),
         @Index(name = "people_model_number_index", columnList = "numberPassport"),
         @Index(name = "people_model_telephone_index", columnList = "telephone"),
-        @Index(name = "people_model_about_index", columnList = "about")
+        @Index(name = "people_model_about_index", columnList = "about"),
+        @Index(name = "people_model_selectParam_index", columnList = "selectParam"),
+        @Index(name = "people_model_pattern_index", columnList = "pattern"),
+        @Index(name = "people_model_titlePattern_index", columnList = "titlePattern")
+
 })
 
 /**
@@ -38,5 +42,5 @@ public class PeopleModel {
 
     @Getter
     @Setter
-    private String name, secondName, gender, age, seriesPassport, numberPassport, telephone, about, er;
+    private String name, secondName, gender, age, seriesPassport, numberPassport, telephone, about, er, selectParam, pattern, titlePattern;
 }

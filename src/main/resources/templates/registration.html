@@ -53,11 +53,11 @@
             <tr>
                 <th colspan="1"> Имя: </th>
                 <td colspan="1">
-                    <input type="text" id="newName" name="newName" th:field="*{name}" pattern=".{2,}" title="Минимум 2 символа" placeholder="Введите Ваше имя" required>
+                    <input type="text" id="newName" name="newName" th:field="*{name}" pattern="^[A-Za-zА-Яа-яЁё\s]{2,}" title="Минимум 2 буквы без цифр и спец. символов" placeholder="Введите Ваше имя" required>
                 </td>
                 <th colspan="1"> Фамилия: </th>
                 <td colspan="1">
-                    <input type="text" id="newSecondName" name="newSecondName" th:field="*{secondName}" pattern=".{2,}" title="Минимум 2 символа" placeholder="Введите Вашу фамилию" required>
+                    <input type="text" id="newSecondName" name="newSecondName" th:field="*{secondName}" pattern="^[A-Za-zА-Яа-яЁё\s]{2,}" title="Минимум 2 буквы без цифр и спец. символов" placeholder="Введите Вашу фамилию" required>
                 </td>
             </tr>
             <tr>
@@ -76,11 +76,11 @@
             <tr>
                 <th colspan="1"> Серия: </th>
                 <td colspan="1">
-                    <input type="text" id="seriesPassport" name="seriesPassport" th:field="*{seriesPassport}" pattern="[0-9]{4}" title="4 символа" placeholder="Введите серию паспорта" required>
+                    <input type="text" id="seriesPassport" name="seriesPassport" th:field="*{seriesPassport}" pattern="[0-9]{4}" title="4 цифры" placeholder="Введите серию паспорта" required>
                 </td>
                 <th colspan="1"> Номер: </th>
                 <td colspan="1">
-                    <input type="text" id="numberPassport" name="numberPassport" th:field="*{numberPassport}" pattern="[0-9]{6}" title="6 символов" placeholder="Введите номер паспорта" required>
+                    <input type="text" id="numberPassport" name="numberPassport" th:field="*{numberPassport}" pattern="[0-9]{6}" title="6 цифр" placeholder="Введите номер паспорта" required>
                 </td>
             </tr>
             <tr>

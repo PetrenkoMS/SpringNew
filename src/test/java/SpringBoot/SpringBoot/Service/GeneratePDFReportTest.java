@@ -27,9 +27,9 @@ public class GeneratePDFReportTest {
 
         String series_user = "1111";
         String number_user = "111111";
-        PeopleModel user = new PeopleModel(58L, "Mike", "qwe", "Михаил", "Петренко", "male", "23", series_user, number_user, "Smile more often!", "88005553535", null);
-        PeopleModel peopleIf = new PeopleModel(58L, "Mike", "qwe", "Михаил", "Петренко", "male", "23", "1111", "222222", "Smile more often!", "88005553535", "ok");
-        PeopleModel peopleElse = new PeopleModel(58L, "Mike", "qwe", "Михаил", "Петренко", "male", "23", "1111", "222222", "Smile more often!", "88005553535", "Данный пользователь не зарегистрирован!");
+        PeopleModel user = new PeopleModel(58L, "Mike", "qwe", "Михаил", "Петренко", "male", "23", series_user, number_user, "Smile more often!", "88005553535", null,null, "[0-9]{4}", "4 цифры");
+        PeopleModel peopleIf = new PeopleModel(58L, "Mike", "qwe", "Михаил", "Петренко", "male", "23", "1111", "222222", "Smile more often!", "88005553535", "ok", null,"[0-9]{4}", "4 цифры");
+        PeopleModel peopleElse = new PeopleModel(58L, "Mike", "qwe", "Михаил", "Петренко", "male", "23", "1111", "222222", "Smile more often!", "88005553535", "Данный пользователь не зарегистрирован!", null,"[0-9]{4}", "4 цифры");
 
         java.util.List<String> userInfo = List.of("Name","Second Name", "Age", "Gender", "Series passport", "Number passport", "telephone", "About");
         java.util.List<String> userInfo1 = List.of();

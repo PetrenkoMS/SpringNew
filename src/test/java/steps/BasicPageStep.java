@@ -1,6 +1,7 @@
 package steps;
 
 import SpringBoot.SpringBoot.pages.BasicPage;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 
 public class BasicPageStep {
@@ -36,6 +37,11 @@ public class BasicPageStep {
         basicPage.exitVisible(arg0);
     }
 
+    @Then("Id {string} visible")
+    public void idVisible(String arg0) {
+        basicPage.idVisible(arg0);
+    }
+
     @Then("Exit {string} not visible")
     public void exitNotVisible(String arg0) {
         basicPage.exitNotVisible(arg0);
@@ -59,5 +65,14 @@ public class BasicPageStep {
     @Then("Input {string} value visible")
     public void inputValueVisible(String arg0) {
         basicPage.inputValueVisible(arg0);
+    }
+
+    @Then("tr name {string} visible")
+    public void trNameVisible(String arg0) {
+        basicPage.trNameVisible(arg0);
+    }
+    @Then("tr name {string} not visible")
+    public void trNameNotVisible(String arg0) {
+        basicPage.trNameNotVisible(arg0);
     }
 }

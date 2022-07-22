@@ -16,6 +16,13 @@ import java.util.List;
 public interface PeopleRepository extends JpaRepository<PeopleModel, Integer> {
     List<PeopleModel> findByLogin(String login);
     List<PeopleModel> findBySeriesPassportAndNumberPassport(String seriesPassport, String numberPassport);
+    List<PeopleModel> findByName(String name);
+    List<PeopleModel> findBySecondName(String secondName);
+    List<PeopleModel> findByGender(String gender);
+    List<PeopleModel> findByAge(String age);
+    List<PeopleModel> findByTelephone(String telephone);
+    List<PeopleModel> findBySeriesPassport(String seriesPassport);
+    List<PeopleModel> findByNumberPassport(String numberPassport);
 
 //    @Query("Select p from PeopleModel p where p.series_passport = :series and p.number_passport = :number")
 //    List<PeopleModel> findBySeriesAndNumber(@Param("series") String series_passport, @Param("number") String number_passport);

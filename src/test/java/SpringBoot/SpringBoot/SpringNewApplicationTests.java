@@ -24,12 +24,12 @@ class SpringNewApplicationTests {
 	@Test
 	@Order(1)
 	public void testCreate () {
-		PeopleModel record_1 = new PeopleModel(80L,"I1k", "gogo", "Ivan","Gagarin", "male", "24", "123245", "4545", "i am Ivan", "88009992323", null);
-		PeopleModel record_2 = new PeopleModel(2L,"I1k2", "gogo", "Ivan","Gagarin", "male", "24", "223245", "4545", "i am Ivan", "88009992323", null);
-		PeopleModel record_3 = new PeopleModel(84L,"I1k", "gogo", "Ivan","Gagarin", "male", "24", "323245", "4545", "i am Ivan", "88009992323", null);
-		PeopleModel record_4 = new PeopleModel(86L,"I1k4", "gogo", "Ivan","Gagarin", "male", "24", "123245", "4545", "i am Ivan", "88009992323", null);
-		PeopleModel record_5 = new PeopleModel(80L,"I1k5", "gogo", "Ivan","Gagarin", "male", "24", "523245", "4545", "i am Ivan", "88009992323", null);
-		PeopleModel record_6 = new PeopleModel(80L,"I1k6", "gogo", "Ivan","Gagarin", "male", "24", "623245", "4545", "i am Ivan", "88009992323", "go");
+		PeopleModel record_1 = new PeopleModel(80L,"I1k", "gogo", "Ivan","Gagarin", "male", "24", "123245", "4545", "i am Ivan", "88009992323", null, null, "[0-9]{4}", "4 цифры");
+		PeopleModel record_2 = new PeopleModel(2L,"I1k2", "gogo", "Ivan","Gagarin", "male", "24", "223245", "4545", "i am Ivan", "88009992323", null, null, "[0-9]{4}", "4 цифры");
+		PeopleModel record_3 = new PeopleModel(84L,"I1k", "gogo", "Ivan","Gagarin", "male", "24", "323245", "4545", "i am Ivan", "88009992323", null, null, "[0-9]{4}", "4 цифры");
+		PeopleModel record_4 = new PeopleModel(86L,"I1k4", "gogo", "Ivan","Gagarin", "male", "24", "123245", "4545", "i am Ivan", "88009992323", null, null,"[0-9]{4}", "4 цифры");
+		PeopleModel record_5 = new PeopleModel(80L,"I1k5", "gogo", "Ivan","Gagarin", "male", "24", "523245", "4545", "i am Ivan", "88009992323", null, null,"[0-9]{4}", "4 цифры");
+		PeopleModel record_6 = new PeopleModel(80L,"I1k6", "gogo", "Ivan","Gagarin", "male", "24", "623245", "4545", "i am Ivan", "88009992323", "go", null,"[0-9]{4}", "4 цифры");
 		pRepository.save(record_1);
 		pRepository.save(record_2);
 		pRepository.save(record_3);
