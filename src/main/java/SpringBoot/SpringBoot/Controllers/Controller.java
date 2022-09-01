@@ -1,18 +1,15 @@
 package SpringBoot.SpringBoot.Controllers;
 
-import SpringBoot.SpringBoot.DB.PeopleRepository;
-import SpringBoot.SpringBoot.DB.UserRepository;
 import SpringBoot.SpringBoot.entity.PeopleModel;
+import SpringBoot.SpringBoot.entity.SortirovkaModel;
 import SpringBoot.SpringBoot.services.*;
 import com.itextpdf.text.DocumentException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
 /**
  * Контроллеры для общения backend и frontend
@@ -26,6 +23,7 @@ public class Controller {
     private final GeneratePDFReport generatePDFReport;
     private final PDFExportService pDFExportService;
     private final FindSomeUsersServices findSomeUsersServices;
+    private final SortirovkaServices sortirovkaServices;
 
     /**
      * Конструктор для controller
@@ -34,14 +32,16 @@ public class Controller {
      * @param findUserServices - бизнес-логика для поиска пользователя
      * @param generatePDFReport - бизнес-логика для генерации pdf файла
      * @param pDFExportService - бизнес-логика для создания и заполнения pdf файла
+     * @param sortirovkaServices - Сортировка массива
      */
-    public Controller(LoginService loginService, RegistrationService registrationService, FindUserServices findUserServices, FindSomeUsersServices findSomeUsersServices, GeneratePDFReport generatePDFReport, PDFExportService pDFExportService) {
+    public Controller(LoginService loginService, RegistrationService registrationService, FindUserServices findUserServices, FindSomeUsersServices findSomeUsersServices, GeneratePDFReport generatePDFReport, PDFExportService pDFExportService, SortirovkaServices sortirovkaServices) {
         this.loginService = loginService;
         this.registrationService = registrationService;
         this.findUserServices = findUserServices;
         this.generatePDFReport = generatePDFReport;
         this.pDFExportService = pDFExportService;
         this.findSomeUsersServices = findSomeUsersServices;
+        this.sortirovkaServices = sortirovkaServices;
     }
 
     /**
@@ -131,5 +131,16 @@ public class Controller {
     @PostMapping(value= "/findSomeUsers")
     public ModelAndView findSomeUsers(PeopleModel someUsers, Model model) {
         return findSomeUsersServices.findSomeUsers(someUsers, model);
+    }
+
+    @GetMapping(value= "/sortirovka")
+    public ModelAndView sortirovka(Model model) {
+        sortirovkaServices.sortirovka(model);
+        return new ModelAndView("sortirovka");
+    }
+
+    @PostMapping(value= "/sortirovka")
+    public ModelAndView sortirovka(SortirovkaModel stroka, Model model){
+        return sortirovkaServices.sortirovkaBubble(stroka, model);
     }
 }

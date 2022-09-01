@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sort</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <link rel="stylesheet" href="CSS/StyleFindUsers.css" type="text/css">
+    <link rel="stylesheet" href="CSS/StyleFooter.css" type="text/css">
+
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+</head>
+<body>
+    <header th:insert="blocks/header :: header"></header>
+    <div class="container mainFindDiv">
+        <form th:action="@{/sortirovka}" th:object="${stroka}" method="post">
+            <p> Введите числа через пробел </p>
+            <div class="poisk">
+                <input id="stringForSort" name="stringForSort" type="text" th:field="*{stringForSort}" pattern="^[ 0-9]+$" title="Только целые числа через пробел" placeholder="Введите данные для сортировки" required>
+            </div>
+            <input type="submit" id="sortedstringBooble" value="Отсортировать методом пузырька" class="list-group-item list-group-item-success btn btn-large btn-success findBtnStyle">
+        </form>
+        <form th:action="@{/sortirovka}" th:object="${stroka}" method="get">
+            <input type="text" id="sortedstring" th:text="${stroka.stringBubbleSorted}">
+        </form>
+    </div>
+</body>
+</html>
