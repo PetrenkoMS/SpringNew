@@ -140,7 +140,14 @@ public class Controller {
     }
 
     @PostMapping(value= "/sortirovka")
-    public ModelAndView sortirovka(SortirovkaModel stroka, Model model){
-        return sortirovkaServices.sortirovkaBubble(stroka, model);
+    public ModelAndView sortirovkaBubble(SortirovkaModel stroka, Model model, @RequestParam(value="action", required=true) String action){
+        ModelAndView temp = new ModelAndView();
+        if (action.equals("sortedstringBubble")) {
+            temp =  sortirovkaServices.sortirovkaBubble(stroka, model);
+        }
+        if (action.equals("sortedstringLin")) {
+            temp = sortirovkaServices.sortirovkaLin(stroka, model);
+        }
+        return temp;
     }
 }

@@ -18,10 +18,16 @@
             <div class="poisk">
                 <input id="stringForSort" name="stringForSort" type="text" th:field="*{stringForSort}" pattern="^[ 0-9]+$" title="Только целые числа через пробел" placeholder="Введите данные для сортировки" required>
             </div>
-            <input type="submit" id="sortedstringBooble" value="Отсортировать методом пузырька" class="list-group-item list-group-item-success btn btn-large btn-success findBtnStyle">
+            <button type="submit" id="sortedstringBubble" name="action" value="sortedstringBubble" class="list-group-item list-group-item-success btn btn-large btn-success findBtnStyle"> Отсортировать методом пузырька </button>
+            <button type="submit" id="sortedstringLin" name="action" value="sortedstringLin" class="list-group-item list-group-item-success btn btn-large btn-success findBtnStyle"> Отсортировать линейным методом </button>
         </form>
         <form th:action="@{/sortirovka}" th:object="${stroka}" method="get">
-            <input type="text" id="sortedstring" th:text="${stroka.stringBubbleSorted}">
+            <label for="sortedstringBubbleResult"> Результат сортировки методом пузырька: </label>
+            <output type="text" id="sortedstringBubbleResult" th:text="${stroka.stringBubbleSorted}"> </output>
+        </form>
+        <form th:action="@{/sortirovka}" th:object="${stroka}" method="get">
+            <label for="sortedstringLinResult"> Результат сортировки линейным методом: </label>
+            <output type="text" id="sortedstringLinResult" th:text="${stroka.stringLinSorted}"> </output>
         </form>
     </div>
 </body>

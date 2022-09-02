@@ -1,6 +1,7 @@
 package SpringBoot.SpringBoot.services;
 
 import SpringBoot.SpringBoot.entity.SortirovkaModel;
+import SpringBoot.SpringBoot.model.ForMassiv;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.servlet.ModelAndView;
@@ -16,7 +17,7 @@ public class SortirovkaServices {
 
         String[] strMassiv = str.split(" ");
         int lengthMassiv = strMassiv.length;
-        int[] massiv = null;
+        int[] massiv = new int[lengthMassiv];
 
         for(int i = 0; i < lengthMassiv; i++) {
             massiv[i] = Integer.parseInt(strMassiv[i]);
@@ -25,16 +26,20 @@ public class SortirovkaServices {
         int temp = 0;
 
         for(int i = 0; i < lengthMassiv-1; i++) {
-                if (massiv[i] > massiv[i+1]) {
-                    temp = massiv[i];
-                    massiv[i] = massiv[i+1];
-                    massiv[i+1] = temp;
+            for(int j = 0; j < lengthMassiv-i-1; j++) {
+                if (massiv[j] > massiv[j+1]) {
+                    temp = massiv[j];
+                    massiv[j] = massiv[j+1];
+                    massiv[j+1] = temp;
                 }
+            }
         }
 
-        String strokaOut = massiv.toString();
+        ForMassiv fm = new ForMassiv();
+        String strokaOut = fm.toString(massiv);
 
         stroka.setStringBubbleSorted(strokaOut);
+        model.addAttribute("stroka", stroka);
         return new ModelAndView("sortirovka");
     }
 
@@ -43,7 +48,7 @@ public class SortirovkaServices {
 
         String[] strMassiv = str.split(" ");
         int lengthMassiv = strMassiv.length;
-        int[] massiv = null;
+        int[] massiv = new int[lengthMassiv];;
 
         for(int i = 0; i < lengthMassiv; i++) {
             massiv[i] = Integer.parseInt(strMassiv[i]);
@@ -52,7 +57,7 @@ public class SortirovkaServices {
         int temp = 0;
 
         for(int i = 0; i < lengthMassiv-1; i++) {
-            for(int j = i+1; j < lengthMassiv-i; j++) {
+            for(int j = i+1; j < lengthMassiv; j++) {
                 if (massiv[i] > massiv[j]) {
                     temp = massiv[i];
                     massiv[i] = massiv[j];
@@ -61,9 +66,11 @@ public class SortirovkaServices {
             }
         }
 
-        String strokaOut = massiv.toString();
+        ForMassiv fm = new ForMassiv();
+        String strokaOut = fm.toString(massiv);
 
         stroka.setStringLinSorted(strokaOut);
+        model.addAttribute("stroka", stroka);
         return new ModelAndView("sortirovka");
     }
 }
