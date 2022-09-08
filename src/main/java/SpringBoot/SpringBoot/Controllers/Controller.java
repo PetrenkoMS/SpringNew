@@ -122,23 +122,47 @@ public class Controller {
         pDFExportService.generatePDF(response);
     }
 
+    /**
+     * Загрузка страницы для поиска пользователей по заданным параметрам
+     * @param model
+     * @return Загрузка страницы для поиска пользователей по заданным параметрам
+     */
     @GetMapping(value="/findSomeUsers")
     public ModelAndView fSomeUsers(Model model) {
         findSomeUsersServices.fSomeUsers(model);
         return new ModelAndView("findSomeUsers");
     }
 
+    /**
+     * Передача данных на страницу по найденным пользователям или сообщение об ошибке
+     * @param someUsers - объект PeopleModel, которая содержит информацию о пользователе
+     * @param model
+     * @return Бизнес-логика findSomeUsersServices
+     */
     @PostMapping(value= "/findSomeUsers")
     public ModelAndView findSomeUsers(PeopleModel someUsers, Model model) {
         return findSomeUsersServices.findSomeUsers(someUsers, model);
     }
 
+    /**
+     * Загрузка страницы для сортировки массива
+     * @param model
+     * @return Страницы для сортировки массива
+     */
     @GetMapping(value= "/sortirovka")
     public ModelAndView sortirovka(Model model) {
         sortirovkaServices.sortirovka(model);
         return new ModelAndView("sortirovka");
     }
 
+    /**
+     * Сортировка массива заданным методом
+     * @param stroka - сортируемый массив
+     * @param model
+     * @param action - при значении "sortedstringBubble" выполняется бизнес-логика sortirovkaBubble
+     *               при значении "sortedstringLin" выполняется бизнес-логика sortirovkaLin
+     * @return Бизнес-логики sortirovkaServices
+     */
     @PostMapping(value= "/sortirovka")
     public ModelAndView sortirovkaBubble(SortirovkaModel stroka, Model model, @RequestParam(value="action", required=true) String action){
         ModelAndView temp = new ModelAndView();
