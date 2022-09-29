@@ -3,19 +3,20 @@ package config;
 import java.util.Map;
 
 public class config {
-    static String[] main_config= {"cucumber03", "1393", "138883"};
-    public static String[] param = {main_config[0], "qwe","ogyrchik", "zeleniq", "female", "23", main_config[1],main_config[2], "88005553500", "Cucumber run registration"};
+    //login, series, number
+    static String[] main_config= {"cucumber5", "1385", "138885"}; //138* 13888* (4)
+    public static String[] param = {main_config[0], "qwe","ogurchik", "zelenenkiq", "female", "18", main_config[1],main_config[2], "88005553535", "Cucumber test run"};
 
-    public static String[] paramFind = {"1387","138877"};
+    public static String[] paramFind = {main_config[1],main_config[2]};
 
-    public static Map<String,String> paramSelectedFind = Map.of("name","ogyrchik",
-                                                                "secondName","Great",
-                                                                "age", "23",
-                                                                "gender","male",
-                                                                "telephone","88005553535",
-                                                                "seriesPassport","1111",
-                                                                "numberPassport","111111",
-                                                                "login","qqq"
+    public static Map<String,String> paramSelectedFind = Map.of("name",param[2],
+                                                                "secondName",param[3],
+                                                                "age", param[5],
+                                                                "gender",param[4],
+                                                                "telephone",param[8],
+                                                                "seriesPassport",param[6],
+                                                                "numberPassport",param[7],
+                                                                "login",param[0]
                                                                 );
 
     public static Map<String,String> paramSelectedFindWrong1 = Map.of("wrongName", "k",
